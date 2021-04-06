@@ -27,9 +27,13 @@ const Datepicker: React.FC = () => {
 
         <ol className="calendar">
           {calendar.dates.map((date) => {
-            const { isSelected } = getDateProps({ date });
+            const { isSelected, ...props } = getDateProps({ date });
             return (
-              <li key={date} className={`${isSelected ? "selected" : ""}`}>
+              <li
+                {...props}
+                key={date.toString()}
+                className={`${isSelected ? "selected" : ""}`}
+              >
                 {format(date, "d")}
               </li>
             );
