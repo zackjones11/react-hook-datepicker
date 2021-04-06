@@ -11,5 +11,5 @@ export type UseDateRangePickerReturn = {
   calendars: Calendar[];
   getDateProps: (
     props: GetDateProps
-  ) => { onClick: () => void; isSelected: boolean };
+  ) => { onClick: () => void; isSelected: boolean; isInRange: boolean };
 };

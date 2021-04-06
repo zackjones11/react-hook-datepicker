@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import "./Datepicker.css";
 
 const DateRangePicker: React.FC = () => {
-  const { calendars } = useDateRangePicker({
+  const { calendars, getDateProps } = useDateRangePicker({
     currentRange: { start: new Date(2021, 2, 10), end: new Date(2021, 2, 15) },
   });
 
@@ -23,7 +23,22 @@ const DateRangePicker: React.FC = () => {
           </p>
           <ol className="calendar">
             {calendars[0].dates.map((date) => {
-              return <li key={date}>{format(date, "d")}</li>;
+              const { isSelected, isInRange, ...props } = getDateProps({
+                date,
+              });
+
+              return (
+                <li
+                  {...props}
+                  key={date.toString()}
+                  style={{
+                    background: isSelected ? "blue" : "",
+                    color: isInRange ? "blue" : "",
+                  }}
+                >
+                  {format(date, "d")}
+                </li>
+              );
             })}
           </ol>
         </div>
@@ -34,7 +49,22 @@ const DateRangePicker: React.FC = () => {
           </p>
           <ol className="calendar">
             {calendars[1].dates.map((date) => {
-              return <li key={date}>{format(date, "d")}</li>;
+              const { isSelected, isInRange, ...props } = getDateProps({
+                date,
+              });
+
+              return (
+                <li
+                  {...props}
+                  key={date.toString()}
+                  style={{
+                    background: isSelected ? "blue" : "",
+                    color: isInRange ? "blue" : "",
+                  }}
+                >
+                  {format(date, "d")}
+                </li>
+              );
             })}
           </ol>
         </div>
