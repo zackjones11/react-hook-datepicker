@@ -1,5 +1,5 @@
-export type GetDayProps = {
-  day: number;
+export type GetDateProps = {
+  date: Date;
 };
 
 export type Calendar = { dates: Date[]; month: string; year: number };
