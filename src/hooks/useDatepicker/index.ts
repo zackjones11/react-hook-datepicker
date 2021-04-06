@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as DateFn from "date-fns";
+import { getDatesInMonth } from "../../utils";
 import { UseDatepicker, UseDatepickerReturn, GetDayProps } from "../../types";
 
 const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
   const [selectedDate, setSelectedDate] = React.useState(props.currentDate);
   const [visibleDate, setVisibleDate] = React.useState(props.currentDate);
-  const daysInMonth = DateFn.getDaysInMonth(visibleDate);
 
   const handleDayChange = (day: number) => {
     const newDate = DateFn.setDate(visibleDate, day);
@@ -41,9 +41,11 @@ const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
 
   return {
     selectedDate,
-    visibleMonth: DateFn.format(visibleDate, "MMMM"),
-    visibleYear: DateFn.format(visibleDate, "yyyy"),
-    calendar: [...Array(daysInMonth)].map((_, i) => i + 1),
+    calendar: {
+      month: DateFn.format(visibleDate, "MMMM"),
+      year: DateFn.getYear(visibleDate),
+      dates: getDatesInMonth(visibleDate),
+    },
     getDayProps,
     getNextMonthButtonProps,
     getPrevMonthButtonProps,

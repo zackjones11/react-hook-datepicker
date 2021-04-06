@@ -1,3 +1,5 @@
+import { Calendar } from "./common";
+
 export type DateRange = { start: Date; end: Date };
 
 export type UseDateRangePicker = {
@@ -5,5 +7,5 @@ export type UseDateRangePicker = {
 };
 
 export type UseDateRangePickerReturn = {
-  calendars: Array<{ dates: Date[]; month: string; year: number }>;
+  calendars: Calendar[];
 };

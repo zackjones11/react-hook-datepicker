@@ -1,4 +1,4 @@
-import { GetDayProps } from "./common";
+import { GetDayProps, Calendar } from "./common";
 
 export type UseDatepicker = {
   currentDate: Date;
@@ -6,9 +6,7 @@ export type UseDatepicker = {
 
 export type UseDatepickerReturn = {
   selectedDate: Date;
-  visibleMonth: string;
-  visibleYear: string;
-  calendar: number[];
+  calendar: Calendar;
   getDayProps: (
     props: GetDayProps
   ) => { onClick: () => void; isSelected: boolean };

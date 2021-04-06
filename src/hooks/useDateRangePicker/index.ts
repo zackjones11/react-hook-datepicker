@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as DateFn from "date-fns";
+import { getDatesInMonth } from "../../utils";
 import { UseDateRangePicker, UseDateRangePickerReturn } from "../../types";
 
 const useDateRangePicker = (
@@ -16,16 +17,12 @@ const useDateRangePicker = (
       {
         month: DateFn.format(visibleRange.start, "MMMM"),
         year: DateFn.getYear(visibleRange.start),
-        dates: [
-          ...Array(DateFn.getDaysInMonth(visibleRange.start)),
-        ].map((_, i) => DateFn.setDate(visibleRange.start, i + 1)),
+        dates: getDatesInMonth(visibleRange.start),
       },
       {
         month: DateFn.format(visibleRange.end, "MMMM"),
         year: DateFn.getYear(visibleRange.end),
-        dates: [...Array(DateFn.getDaysInMonth(visibleRange.end))].map((_, i) =>
-          DateFn.setDate(visibleRange.end, i + 1)
-        ),
+        dates: getDatesInMonth(visibleRange.end),
       },
     ],
   };

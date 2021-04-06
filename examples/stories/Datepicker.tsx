@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import * as React from "react";
 import { useDatepicker } from "../../src/index";
 import "./Datepicker.css";
@@ -5,8 +6,6 @@ import "./Datepicker.css";
 const Datepicker: React.FC = () => {
   const {
     selectedDate,
-    visibleMonth,
-    visibleYear,
     calendar,
     getDayProps,
     getPrevMonthButtonProps,
@@ -19,7 +18,7 @@ const Datepicker: React.FC = () => {
       </p>
 
       <p>
-        <b>visible:</b> {visibleMonth} {visibleYear}
+        <b>visible:</b> {calendar.month} {calendar.year}
       </p>
 
       <div>
@@ -27,11 +26,11 @@ const Datepicker: React.FC = () => {
         <button {...getNextMonthButtonProps()}>NEXT MONTH</button>
 
         <ol className="calendar">
-          {calendar.map((day) => {
-            const { isSelected } = getDayProps({ day });
+          {calendar.dates.map((date) => {
+            const { isSelected } = getDayProps({ day: 1 });
             return (
-              <li key={day} className={`${isSelected ? "selected" : ""}`}>
-                {day}
+              <li key={date} className={`${isSelected ? "selected" : ""}`}>
+                {format(date, "d")}
               </li>
             );
           })}
