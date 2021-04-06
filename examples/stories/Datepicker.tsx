@@ -4,6 +4,9 @@ import "./Datepicker.css";
 
 const Datepicker: React.FC = () => {
   const {
+    selectedDate,
+    visibleMonth,
+    visibleYear,
     calendar,
     getDayProps,
     getPrevMonthButtonProps,
@@ -11,6 +14,14 @@ const Datepicker: React.FC = () => {
   } = useDatepicker({ currentDate: new Date() });
   return (
     <div className="calendar-wrapper">
+      <p>
+        <b>selectedDate:</b> {JSON.stringify(selectedDate)}
+      </p>
+
+      <p>
+        <b>visible:</b> {visibleMonth} {visibleYear}
+      </p>
+
       <div>
         <button {...getPrevMonthButtonProps()}>PREV MONTH</button>
         <button {...getNextMonthButtonProps()}>NEXT MONTH</button>

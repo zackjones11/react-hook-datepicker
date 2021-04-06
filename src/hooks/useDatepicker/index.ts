@@ -40,6 +40,9 @@ const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
   };
 
   return {
+    selectedDate,
+    visibleMonth: DateFn.format(visibleDate, "MMMM"),
+    visibleYear: DateFn.format(visibleDate, "yyyy"),
     calendar: [...Array(daysInMonth)].map((_, i) => i + 1),
     getDayProps,
     getNextMonthButtonProps,

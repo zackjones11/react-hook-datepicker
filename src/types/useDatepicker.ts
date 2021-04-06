@@ -7,6 +7,9 @@ export type GetDayProps = {
 };
 
 export type UseDatepickerReturn = {
+  selectedDate: Date;
+  visibleMonth: string;
+  visibleYear: string;
   calendar: number[];
   getDayProps: (
     props: GetDayProps
