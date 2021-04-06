@@ -51,7 +51,7 @@ const useDateRangePicker = (
 
   const getNextMonthButtonProps = () => {
     const start = DateFn.addMonths(visibleRange.start, 1);
-    const end = DateFn.addMonths(start, 1);
+    const end = DateFn.addMonths(visibleRange.end, 1);
 
     return {
       onClick: () => setVisibleRange({ start, end }),
@@ -60,7 +60,7 @@ const useDateRangePicker = (
 
   const getPrevMonthButtonProps = () => {
     const start = DateFn.subMonths(visibleRange.start, 1);
-    const end = DateFn.subMonths(start, 1);
+    const end = DateFn.subMonths(visibleRange.end, 1);
 
     return {
       onClick: () => setVisibleRange({ start, end }),
