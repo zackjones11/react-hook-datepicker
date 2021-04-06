@@ -13,6 +13,25 @@ const useDateRangePicker = (
   });
   const [selectedRange, setSelectedRange] = React.useState(currentRange);
 
+  const handleDateClicked = (date: Date) => {
+    const isAfterStartDate =
+      selectedRange.start &&
+      DateFn.differenceInCalendarDays(date, selectedRange.start) > 0;
+
+    if (isAfterStartDate) {
+      setSelectedRange({
+        ...selectedRange,
+        end: date,
+      });
+      return;
+    }
+
+    setSelectedRange({
+      ...selectedRange,
+      start: date,
+    });
+  };
+
   const getDateProps = ({ date }: { date: Date }) => {
     const isSelected =
       DateFn.differenceInCalendarDays(selectedRange.start, date) === 0 ||
@@ -24,7 +43,7 @@ const useDateRangePicker = (
       DateFn.differenceInCalendarDays(selectedRange.end, date) > 0;
 
     return {
-      onClick: () => console.log({ date }),
+      onClick: () => handleDateClicked(date),
       isSelected,
       isInRange,
     };
