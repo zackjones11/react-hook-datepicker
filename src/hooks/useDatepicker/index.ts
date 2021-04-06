@@ -7,13 +7,18 @@ const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
   const [visibleDate, setVisibleDate] = React.useState(props.currentDate);
   const daysInMonth = DateFn.getDaysInMonth(visibleDate);
 
+  const handleDayChange = (day: number) => {
+    const newDate = DateFn.setDate(visibleDate, day);
+    setSelectedDate(newDate);
+  };
+
   const getDayProps = ({ day }: GetDayProps) => {
     const isSameMonth =
       DateFn.differenceInCalendarMonths(selectedDate, visibleDate) === 0;
     const isSameDay = DateFn.getDate(selectedDate) === day;
 
     return {
-      onClick: () => console.log(day),
+      onClick: () => handleDayChange(day),
       isSelected: isSameMonth && isSameDay,
     };
   };
