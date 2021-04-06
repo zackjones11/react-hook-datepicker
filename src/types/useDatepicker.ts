@@ -11,4 +11,6 @@ export type UseDatepickerReturn = {
   getDayProps: (
     props: GetDayProps
   ) => { onClick: () => void; isSelected: boolean };
+  getNextMonthButtonProps: () => { onClick: () => void };
+  getPrevMonthButtonProps: () => { onClick: () => void };
 };

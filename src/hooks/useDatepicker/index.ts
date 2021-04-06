@@ -23,9 +23,27 @@ const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
     };
   };
 
+  const getNextMonthButtonProps = () => {
+    const nextVisibleDate = DateFn.addMonths(visibleDate, 1);
+
+    return {
+      onClick: () => setVisibleDate(nextVisibleDate),
+    };
+  };
+
+  const getPrevMonthButtonProps = () => {
+    const nextVisibleDate = DateFn.subMonths(visibleDate, 1);
+
+    return {
+      onClick: () => setVisibleDate(nextVisibleDate),
+    };
+  };
+
   return {
     calendar: [...Array(daysInMonth)].map((_, i) => i + 1),
     getDayProps,
+    getNextMonthButtonProps,
+    getPrevMonthButtonProps,
   };
 };
 
