@@ -1,1 +1,1 @@
-export { useDatepicker } from "./hooks";
+export { useDatepicker, useDateRangePicker } from "./hooks";

@@ -1,9 +1,7 @@
+import { GetDayProps } from "./common";
+
 export type UseDatepicker = {
   currentDate: Date;
-};
-
-export type GetDayProps = {
-  day: number;
 };
 
 export type UseDatepickerReturn = {
