@@ -1,0 +1,19 @@
+.calendar-wrapper {
+	max-width: 280px;
+	font: 100% system-ui;
+}
+.calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+}
+
+ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+li {
+	padding: 2px;
+}
