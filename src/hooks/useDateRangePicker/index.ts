@@ -11,8 +11,27 @@ const useDateRangePicker = (
     start: currentRange.start,
     end: DateFn.addMonths(currentRange.end, 1),
   });
+  const [selectedRange, setSelectedRange] = React.useState(currentRange);
+
+  const getDateProps = ({ date }: { date: Date }) => {
+    const isSelected =
+      DateFn.differenceInCalendarDays(selectedRange.start, date) === 0 ||
+      DateFn.differenceInCalendarDays(selectedRange.end, date) === 0;
+
+    const isInRange =
+      selectedRange.start &&
+      DateFn.differenceInCalendarDays(selectedRange.start, date) < 0 &&
+      DateFn.differenceInCalendarDays(selectedRange.end, date) > 0;
+
+    return {
+      onClick: () => console.log({ date }),
+      isSelected,
+      isInRange,
+    };
+  };
 
   return {
+    selectedRange,
     calendars: [
       {
         month: DateFn.format(visibleRange.start, "MMMM"),
@@ -25,6 +44,7 @@ const useDateRangePicker = (
         dates: getDatesInMonth(visibleRange.end),
       },
     ],
+    getDateProps,
   };
 };
 
