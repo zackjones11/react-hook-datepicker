@@ -11,63 +11,39 @@ const DateRangePicker: React.FC = () => {
   return (
     <div className="calendar-wrapper">
       <div style={{ display: "inline-flex" }}>
-        <div
-          style={{
-            width: 260,
-            borderRight: "1px solid black",
-            marginRight: 10,
-          }}
-        >
-          <p>
-            {calendars[0].month} {calendars[0].year}
-          </p>
-          <ol className="calendar">
-            {calendars[0].dates.map((date) => {
-              const { isSelected, isInRange, ...props } = getDateProps({
-                date,
-              });
+        {calendars.map((calendar, index) => (
+          <div
+            key={index}
+            style={{
+              width: 260,
+              marginRight: 10,
+            }}
+          >
+            <p>
+              {calendar.month} {calendar.year}
+            </p>
+            <ol className="calendar">
+              {calendar.dates.map((date) => {
+                const { isSelected, isInRange, ...props } = getDateProps({
+                  date,
+                });
 
-              return (
-                <li
-                  {...props}
-                  key={date.toString()}
-                  style={{
-                    background: isSelected ? "blue" : "",
-                    color: isInRange ? "blue" : "",
-                  }}
-                >
-                  {format(date, "d")}
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-
-        <div style={{ width: 260 }}>
-          <p>
-            {calendars[1].month} {calendars[1].year}
-          </p>
-          <ol className="calendar">
-            {calendars[1].dates.map((date) => {
-              const { isSelected, isInRange, ...props } = getDateProps({
-                date,
-              });
-
-              return (
-                <li
-                  {...props}
-                  key={date.toString()}
-                  style={{
-                    background: isSelected ? "blue" : "",
-                    color: isInRange ? "blue" : "",
-                  }}
-                >
-                  {format(date, "d")}
-                </li>
-              );
-            })}
-          </ol>
-        </div>
+                return (
+                  <li
+                    {...props}
+                    key={date.toString()}
+                    style={{
+                      background: isSelected ? "blue" : "",
+                      color: isInRange ? "blue" : "",
+                    }}
+                  >
+                    {format(date, "d")}
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        ))}
       </div>
     </div>
   );
