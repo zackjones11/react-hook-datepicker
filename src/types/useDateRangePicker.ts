@@ -12,4 +12,6 @@ export type UseDateRangePickerReturn = {
   getDateProps: (
     props: GetDateProps
   ) => { onClick: () => void; isSelected: boolean; isInRange: boolean };
+  getNextMonthButtonProps: () => { onClick: () => void };
+  getPrevMonthButtonProps: () => { onClick: () => void };
 };

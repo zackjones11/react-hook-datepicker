@@ -4,12 +4,20 @@ import { format } from "date-fns";
 import "./Datepicker.css";
 
 const DateRangePicker: React.FC = () => {
-  const { calendars, getDateProps } = useDateRangePicker({
+  const {
+    calendars,
+    getDateProps,
+    getPrevMonthButtonProps,
+    getNextMonthButtonProps,
+  } = useDateRangePicker({
     currentRange: { start: new Date(2021, 2, 10), end: new Date(2021, 2, 15) },
   });
 
   return (
     <div className="calendar-wrapper">
+      <button {...getPrevMonthButtonProps()}>Previous Month</button>
+      <button {...getNextMonthButtonProps()}>Next Month</button>
+
       <div style={{ display: "inline-flex" }}>
         {calendars.map((calendar, index) => (
           <div
