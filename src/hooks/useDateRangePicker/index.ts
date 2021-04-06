@@ -1,6 +1,11 @@
 import * as React from "react";
 import * as DateFn from "date-fns";
-import { getDatesInMonth } from "../../utils";
+import {
+  getDatesInMonth,
+  isSameDate,
+  isBeforeDate,
+  isAfterDate,
+} from "../../utils";
 import { UseDateRangePicker, UseDateRangePickerReturn } from "../../types";
 
 const useDateRangePicker = (
@@ -34,13 +39,13 @@ const useDateRangePicker = (
 
   const getDateProps = ({ date }: { date: Date }) => {
     const isSelected =
-      DateFn.differenceInCalendarDays(selectedRange.start, date) === 0 ||
-      DateFn.differenceInCalendarDays(selectedRange.end, date) === 0;
+      isSameDate(selectedRange.start, date) ||
+      isSameDate(selectedRange.end, date);
 
     const isInRange =
       selectedRange.start &&
-      DateFn.differenceInCalendarDays(selectedRange.start, date) < 0 &&
-      DateFn.differenceInCalendarDays(selectedRange.end, date) > 0;
+      isBeforeDate(selectedRange.start, date) &&
+      isAfterDate(selectedRange.end, date);
 
     return {
       onClick: () => handleDateClicked(date),

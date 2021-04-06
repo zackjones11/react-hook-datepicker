@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as DateFn from "date-fns";
-import { getDatesInMonth } from "../../utils";
+import { getDatesInMonth, isSameDate } from "../../utils";
 import { UseDatepicker, UseDatepickerReturn, GetDateProps } from "../../types";
 
 const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
@@ -12,12 +12,9 @@ const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
   };
 
   const getDateProps = ({ date }: GetDateProps) => {
-    const isSelected =
-      DateFn.differenceInCalendarDays(selectedDate, date) === 0;
-
     return {
       onClick: () => handleDateChange(date),
-      isSelected,
+      isSelected: isSameDate(selectedDate, date),
     };
   };
 
