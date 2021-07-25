@@ -1,5 +1,9 @@
 # React Hook Datepicker (work in progress)
 
+```
+npm install @zackjones11/react-hook-datepicker --save
+```
+
 ### useDatePicker
 
 ```ts
