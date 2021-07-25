@@ -8,15 +8,14 @@ const useDatepicker = (props?: UseDatepicker): UseDatepickerReturn => {
   const [visibleDate, setVisibleDate] = React.useState(
     props?.currentDate || new Date()
   );
-
-  const handleDateChange = (date: Date) => {
-    setSelectedDate(date);
-  };
+  const [hoveredDate, setHoveredDate] = React.useState<Date | undefined>();
 
   const getDateProps = ({ date }: GetDateProps) => {
     return {
-      onClick: () => handleDateChange(date),
+      onClick: () => setSelectedDate(date),
+      onPointerOver: () => setHoveredDate(date),
       isSelected: isSameDate(selectedDate, date),
+      isHovered: isSameDate(hoveredDate, date),
     };
   };
 

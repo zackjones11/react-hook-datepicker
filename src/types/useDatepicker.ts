@@ -9,7 +9,7 @@ export type UseDatepickerReturn = {
   calendar: Calendar;
   getDateProps: (
     props: GetDateProps
-  ) => { onClick: () => void; isSelected: boolean };
+  ) => { onClick: () => void; isSelected: boolean; isHovered: boolean };
   getNextMonthButtonProps: () => { onClick: () => void };
   getPrevMonthButtonProps: () => { onClick: () => void };
 };
