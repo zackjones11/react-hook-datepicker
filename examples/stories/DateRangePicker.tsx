@@ -5,16 +5,21 @@ import "./Datepicker.css";
 
 const DateRangePicker: React.FC = () => {
   const {
+    selectedRange,
     calendars,
     getDateProps,
     getPrevMonthButtonProps,
     getNextMonthButtonProps,
-  } = useDateRangePicker({
-    currentRange: { start: new Date(2021, 2, 10), end: new Date(2021, 2, 15) },
-  });
+  } = useDateRangePicker();
+
+  // currentRange: { start: new Date(2021, 2, 10), end: new Date(2021, 2, 15) },
 
   return (
     <div className="calendar-wrapper">
+      <p>
+        <b>selectedRange:</b> {JSON.stringify(selectedRange)}
+      </p>
+
       <button {...getPrevMonthButtonProps()}>Previous Month</button>
       <button {...getNextMonthButtonProps()}>Next Month</button>
 
@@ -32,19 +37,21 @@ const DateRangePicker: React.FC = () => {
             </p>
             <ol className="calendar">
               {calendar.dates.map((date) => {
-                const { isSelected, isInRange, ...props } = getDateProps({
+                const {
+                  isSelected,
+                  isInRange,
+                  isHovered,
+                  ...props
+                } = getDateProps({
                   date,
                 });
 
+                const classes = `${isSelected ? "selected" : ""} ${
+                  isInRange ? "in-range" : ""
+                } ${isHovered ? "hovered" : ""}`;
+
                 return (
-                  <li
-                    {...props}
-                    key={date.toString()}
-                    style={{
-                      background: isSelected ? "blue" : "",
-                      color: isInRange ? "blue" : "",
-                    }}
-                  >
+                  <li {...props} key={date.toString()} className={classes}>
                     {format(date, "d")}
                   </li>
                 );

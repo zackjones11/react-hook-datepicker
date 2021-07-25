@@ -1,11 +1,13 @@
 import * as React from "react";
 import * as DateFn from "date-fns";
-import { getDatesInMonth, isSameDate } from "../../utils";
+import { createCalendar, isSameDate } from "../../utils";
 import { UseDatepicker, UseDatepickerReturn, GetDateProps } from "../../types";
 
-const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
-  const [selectedDate, setSelectedDate] = React.useState(props.currentDate);
-  const [visibleDate, setVisibleDate] = React.useState(props.currentDate);
+const useDatepicker = (props?: UseDatepicker): UseDatepickerReturn => {
+  const [selectedDate, setSelectedDate] = React.useState(props?.currentDate);
+  const [visibleDate, setVisibleDate] = React.useState(
+    props?.currentDate || new Date()
+  );
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -36,11 +38,7 @@ const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
 
   return {
     selectedDate,
-    calendar: {
-      month: DateFn.format(visibleDate, "MMMM"),
-      year: DateFn.getYear(visibleDate),
-      dates: getDatesInMonth(visibleDate),
-    },
+    calendar: createCalendar(visibleDate),
     getDateProps,
     getNextMonthButtonProps,
     getPrevMonthButtonProps,

@@ -1,62 +1,70 @@
 import * as React from "react";
-import * as DateFn from "date-fns";
 import {
-  getDatesInMonth,
   isSameDate,
   isBeforeDate,
   isAfterDate,
+  addMonth,
+  subMonth,
+  createCalendar,
 } from "../../utils";
-import { UseDateRangePicker, UseDateRangePickerReturn } from "../../types";
+import {
+  DateRange,
+  UseDateRangePicker,
+  UseDateRangePickerReturn,
+} from "../../types";
 
 const useDateRangePicker = (
-  props: UseDateRangePicker
+  props?: UseDateRangePicker
 ): UseDateRangePickerReturn => {
-  const { currentRange } = props;
   const [visibleRange, setVisibleRange] = React.useState({
-    start: currentRange.start,
-    end: DateFn.addMonths(currentRange.end, 1),
+    start: props?.currentRange?.start || new Date(),
+    end: addMonth(props?.currentRange?.end || new Date()),
   });
-  const [selectedRange, setSelectedRange] = React.useState(currentRange);
+  const [selectedRange, setSelectedRange] = React.useState(props?.currentRange);
+  const [hoveredRange, setHoveredRange] = React.useState<
+    DateRange | undefined
+  >();
+
+  const handleDateHovered = (date: Date) => {
+    setHoveredRange({ start: selectedRange?.start, end: date });
+  };
 
   const handleDateClicked = (date: Date) => {
-    const isAfterStartDate =
-      selectedRange.start &&
-      DateFn.differenceInCalendarDays(date, selectedRange.start) > 0;
+    const isAfterStartDate = isAfterDate(date, selectedRange?.start);
+    const stateKey = isAfterStartDate ? "end" : "start";
 
-    if (isAfterStartDate) {
-      setSelectedRange({
-        ...selectedRange,
-        end: date,
-      });
-      return;
-    }
-
-    setSelectedRange({
+    const nextRange = {
       ...selectedRange,
-      start: date,
-    });
+      [stateKey]: date,
+    };
+
+    setHoveredRange(nextRange);
+    setSelectedRange(nextRange);
   };
 
   const getDateProps = ({ date }: { date: Date }) => {
     const isSelected =
-      isSameDate(selectedRange.start, date) ||
-      isSameDate(selectedRange.end, date);
+      isSameDate(selectedRange?.start, date) ||
+      isSameDate(selectedRange?.end, date);
 
     const isInRange =
-      selectedRange.start &&
-      isBeforeDate(selectedRange.start, date) &&
-      isAfterDate(selectedRange.end, date);
+      isBeforeDate(selectedRange?.start || hoveredRange?.start, date) &&
+      isAfterDate(selectedRange?.end || hoveredRange?.end, date);
+
+    const isHovered = isSameDate(hoveredRange?.end, date);
 
     return {
       onClick: () => handleDateClicked(date),
+      onPointerOver: () => handleDateHovered(date),
       isSelected,
       isInRange,
+      isHovered,
     };
   };
 
   const getNextMonthButtonProps = () => {
-    const start = DateFn.addMonths(visibleRange.start, 1);
-    const end = DateFn.addMonths(visibleRange.end, 1);
+    const start = addMonth(visibleRange.start);
+    const end = addMonth(visibleRange.end);
 
     return {
       onClick: () => setVisibleRange({ start, end }),
@@ -64,8 +72,8 @@ const useDateRangePicker = (
   };
 
   const getPrevMonthButtonProps = () => {
-    const start = DateFn.subMonths(visibleRange.start, 1);
-    const end = DateFn.subMonths(visibleRange.end, 1);
+    const start = subMonth(visibleRange.start);
+    const end = subMonth(visibleRange.end);
 
     return {
       onClick: () => setVisibleRange({ start, end }),
@@ -75,16 +83,8 @@ const useDateRangePicker = (
   return {
     selectedRange,
     calendars: [
-      {
-        month: DateFn.format(visibleRange.start, "MMMM"),
-        year: DateFn.getYear(visibleRange.start),
-        dates: getDatesInMonth(visibleRange.start),
-      },
-      {
-        month: DateFn.format(visibleRange.end, "MMMM"),
-        year: DateFn.getYear(visibleRange.end),
-        dates: getDatesInMonth(visibleRange.end),
-      },
+      createCalendar(visibleRange.start),
+      createCalendar(visibleRange.end),
     ],
     getDateProps,
     getNextMonthButtonProps,

@@ -10,7 +10,8 @@ const Datepicker: React.FC = () => {
     getDateProps,
     getPrevMonthButtonProps,
     getNextMonthButtonProps,
-  } = useDatepicker({ currentDate: new Date() });
+  } = useDatepicker();
+
   return (
     <div className="calendar-wrapper">
       <p>
@@ -22,8 +23,8 @@ const Datepicker: React.FC = () => {
       </p>
 
       <div>
-        <button {...getPrevMonthButtonProps()}>PREV MONTH</button>
-        <button {...getNextMonthButtonProps()}>NEXT MONTH</button>
+        <button {...getPrevMonthButtonProps()}>Previous Month</button>
+        <button {...getNextMonthButtonProps()}>Next Month</button>
 
         <ol className="calendar">
           {calendar.dates.map((date) => {

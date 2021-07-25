@@ -1,11 +1,11 @@
 import { GetDateProps, Calendar } from "./common";
 
 export type UseDatepicker = {
-  currentDate: Date;
+  currentDate?: Date;
 };
 
 export type UseDatepickerReturn = {
-  selectedDate: Date;
+  selectedDate?: Date;
   calendar: Calendar;
   getDateProps: (
     props: GetDateProps
