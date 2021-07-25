@@ -1,6 +1,6 @@
 {
   "name": "@zackjones11/react-hook-datepicker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of React Hooks to help build both single and range datepickers",
   "main": "dist/index.js",
   "source": "src/index.ts",
