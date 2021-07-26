@@ -1,11 +1,11 @@
 declare type DateRange = { start?: Date; end?: Date };
 
 declare type UseDateRangePicker = {
-  currentRange?: DateRange;
+  value: DateRange;
+  onChange: (value: DateRange) => void;
 };
 
 declare type UseDateRangePickerReturn = {
-  selectedRange?: DateRange;
   calendars: Calendar[];
   getDateProps: (
     props: GetDateProps

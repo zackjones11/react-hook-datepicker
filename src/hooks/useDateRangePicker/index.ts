@@ -9,42 +9,40 @@ import {
 } from "../../utils";
 
 const useDateRangePicker = (
-  props?: UseDateRangePicker
+  props: UseDateRangePicker
 ): UseDateRangePickerReturn => {
   const [visibleRange, setVisibleRange] = React.useState({
-    start: props?.currentRange?.start || new Date(),
-    end: addMonth(props?.currentRange?.end || new Date()),
+    start: props.value?.start || new Date(),
+    end: addMonth(props.value?.end || new Date()),
   });
-  const [selectedRange, setSelectedRange] = React.useState(props?.currentRange);
   const [hoveredRange, setHoveredRange] = React.useState<
     DateRange | undefined
   >();
 
   const handleDateHovered = (date: Date) => {
-    setHoveredRange({ start: selectedRange?.start, end: date });
+    setHoveredRange({ start: props.value.start, end: date });
   };
 
   const handleDateClicked = (date: Date) => {
-    const isAfterStartDate = isAfterDate(date, selectedRange?.start);
+    const isAfterStartDate = isAfterDate(date, props.value.start);
     const stateKey = isAfterStartDate ? "end" : "start";
 
     const nextRange = {
-      ...selectedRange,
+      ...props.value,
       [stateKey]: date,
     };
 
     setHoveredRange(nextRange);
-    setSelectedRange(nextRange);
+    props.onChange(nextRange);
   };
 
   const getDateProps = ({ date }: { date: Date }) => {
     const isSelected =
-      isSameDate(selectedRange?.start, date) ||
-      isSameDate(selectedRange?.end, date);
+      isSameDate(props.value.start, date) || isSameDate(props.value.end, date);
 
     const isInRange =
-      isBeforeDate(selectedRange?.start || hoveredRange?.start, date) &&
-      isAfterDate(selectedRange?.end || hoveredRange?.end, date);
+      isBeforeDate(props.value.start || hoveredRange?.start, date) &&
+      isAfterDate(props.value.end || hoveredRange?.end, date);
 
     const isHovered = isSameDate(hoveredRange?.end, date);
 
@@ -76,7 +74,6 @@ const useDateRangePicker = (
   };
 
   return {
-    selectedRange,
     calendars: [
       createCalendar(visibleRange.start),
       createCalendar(visibleRange.end),
