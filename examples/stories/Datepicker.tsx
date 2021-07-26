@@ -4,13 +4,13 @@ import { useDatepicker } from "../../src/index";
 import "./Datepicker.css";
 
 const Datepicker: React.FC = () => {
+  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const {
-    selectedDate,
     calendar,
     getDateProps,
     getPrevMonthButtonProps,
     getNextMonthButtonProps,
-  } = useDatepicker();
+  } = useDatepicker({ value: selectedDate, onChange: setSelectedDate });
 
   return (
     <div className="calendar-wrapper">

@@ -2,18 +2,17 @@ import * as React from "react";
 import * as DateFn from "date-fns";
 import { createCalendar, isSameDate } from "../../utils";
 
-const useDatepicker = (props?: UseDatepicker): UseDatepickerReturn => {
-  const [selectedDate, setSelectedDate] = React.useState(props?.currentDate);
+const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
   const [visibleDate, setVisibleDate] = React.useState(
-    props?.currentDate || new Date()
+    props.value || new Date()
   );
   const [hoveredDate, setHoveredDate] = React.useState<Date | undefined>();
 
   const getDateProps = ({ date }: GetDateProps) => {
     return {
-      onClick: () => setSelectedDate(date),
+      onClick: () => props.onChange(date),
       onPointerOver: () => setHoveredDate(date),
-      isSelected: isSameDate(selectedDate, date),
+      isSelected: isSameDate(props.value, date),
       isHovered: isSameDate(hoveredDate, date),
     };
   };
@@ -35,7 +34,6 @@ const useDatepicker = (props?: UseDatepicker): UseDatepickerReturn => {
   };
 
   return {
-    selectedDate,
     calendar: createCalendar(visibleDate),
     getDateProps,
     getNextMonthButtonProps,

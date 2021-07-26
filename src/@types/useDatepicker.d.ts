@@ -1,9 +1,9 @@
 declare type UseDatepicker = {
-  currentDate?: Date;
+  value: Date | undefined;
+  onChange: (value: Date | undefined) => void;
 };
 
 declare type UseDatepickerReturn = {
-  selectedDate?: Date;
   calendar: Calendar;
   getDateProps: (
     props: GetDateProps

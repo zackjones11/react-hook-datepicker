@@ -7,13 +7,14 @@ npm install @zackjones11/react-hook-datepicker --save
 ### useDatePicker
 
 ```ts
+const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
+
 const {
-  selectedDate,
   calendar,
   getDateProps,
   getPrevMonthButtonProps,
   getNextMonthButtonProps,
-} = useDatepicker();
+} = useDatepicker({ value: selectedDate, onChange: setSelectedDate });
 ```
 
 ### useDateRangePicker
