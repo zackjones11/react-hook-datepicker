@@ -1,11 +1,11 @@
 import * as React from "react";
-import Datepicker from "./Datepicker";
+import DatePicker from "./DatePicker";
 
 export default {
-  title: "Example/Datepicker",
-  component: Datepicker,
+  title: "Example/DatePicker",
+  component: DatePicker,
 };
 
-const Template: React.FC = () => <Datepicker />;
+const Template: React.FC = () => <DatePicker />;
 
 export const Basic = Template.bind({});

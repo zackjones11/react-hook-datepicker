@@ -1,9 +1,9 @@
-declare type UseDatepicker = {
+declare type UseDatePicker = {
   value: Date | undefined;
   onChange: (value: Date | undefined) => void;
 };
 
-declare type UseDatepickerReturn = {
+declare type UseDatePickerReturn = {
   calendar: Calendar;
   getDateProps: (
     props: GetDateProps

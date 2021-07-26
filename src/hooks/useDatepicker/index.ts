@@ -2,7 +2,7 @@ import * as React from "react";
 import * as DateFn from "date-fns";
 import { createCalendar, isSameDate } from "../../utils";
 
-const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
+const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
   const [visibleDate, setVisibleDate] = React.useState(
     props.value || new Date()
   );
@@ -41,4 +41,4 @@ const useDatepicker = (props: UseDatepicker): UseDatepickerReturn => {
   };
 };
 
-export default useDatepicker;
+export default useDatePicker;

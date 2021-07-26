@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDateRangePicker } from "../../src/index";
 import { format } from "date-fns";
-import "./Datepicker.css";
+import "./DatePicker.css";
 
 const DateRangePicker: React.FC = () => {
   const [selectedRange, setSelectedRange] = React.useState<{

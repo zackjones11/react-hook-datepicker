@@ -1,16 +1,16 @@
 import { format } from "date-fns";
 import * as React from "react";
-import { useDatepicker } from "../../src/index";
-import "./Datepicker.css";
+import { useDatePicker } from "../../src/index";
+import "./DatePicker.css";
 
-const Datepicker: React.FC = () => {
+const DatePicker: React.FC = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const {
     calendar,
     getDateProps,
     getPrevMonthButtonProps,
     getNextMonthButtonProps,
-  } = useDatepicker({ value: selectedDate, onChange: setSelectedDate });
+  } = useDatePicker({ value: selectedDate, onChange: setSelectedDate });
 
   return (
     <div className="calendar-wrapper">
@@ -46,4 +46,4 @@ const Datepicker: React.FC = () => {
   );
 };
 
-export default Datepicker;
+export default DatePicker;
