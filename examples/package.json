@@ -1,15 +1,14 @@
 {
   "name": "@zackjones11/react-hook-datepicker",
   "version": "0.0.0",
-  "description": "",
+  "description": "Examples and docs for react-hook-datepicker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "author": "Zack Jones <zackjones11@gmail.com> (https://zackjones.dev/)",
-  "license": "ISC",
+  "author": "Zack Jones (https://zackjones.dev/)",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@storybook/addon-actions": "^6.2.3",

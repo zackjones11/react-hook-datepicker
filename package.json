@@ -49,8 +49,8 @@
     "rollup-plugin-typescript2": "^0.30.0",
     "typescript": "^4.2.3"
   },
-  "author": "Zack Jones",
-  "license": "ISC",
+  "author": "Zack Jones (https://zackjones.dev/)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zackjones11/react-hook-datepicker/issues"
   },
