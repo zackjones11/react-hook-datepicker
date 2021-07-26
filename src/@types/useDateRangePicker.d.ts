@@ -1,12 +1,10 @@
-import { Calendar, GetDateProps } from "./common";
+declare type DateRange = { start?: Date; end?: Date };
 
-export type DateRange = { start?: Date; end?: Date };
-
-export type UseDateRangePicker = {
+declare type UseDateRangePicker = {
   currentRange?: DateRange;
 };
 
-export type UseDateRangePickerReturn = {
+declare type UseDateRangePickerReturn = {
   selectedRange?: DateRange;
   calendars: Calendar[];
   getDateProps: (

@@ -1,6 +1,5 @@
 import * as DateFn from "date-fns";
 import getDatesInMonth from "./getDatesInMonth";
-import { Calendar } from "../types";
 
 const createCalendar = (date: Date): Calendar => {
   return {

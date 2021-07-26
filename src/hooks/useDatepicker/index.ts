@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as DateFn from "date-fns";
 import { createCalendar, isSameDate } from "../../utils";
-import { UseDatepicker, UseDatepickerReturn, GetDateProps } from "../../types";
 
 const useDatepicker = (props?: UseDatepicker): UseDatepickerReturn => {
   const [selectedDate, setSelectedDate] = React.useState(props?.currentDate);

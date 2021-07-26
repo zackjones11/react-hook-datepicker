@@ -1,10 +1,8 @@
-import { GetDateProps, Calendar } from "./common";
-
-export type UseDatepicker = {
+declare type UseDatepicker = {
   currentDate?: Date;
 };
 
-export type UseDatepickerReturn = {
+declare type UseDatepickerReturn = {
   selectedDate?: Date;
   calendar: Calendar;
   getDateProps: (
