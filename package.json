@@ -1,5 +1,5 @@
 {
-  "name": "@zackjones11/react-hook-datepicker",
+  "name": "react-hook-datepicker",
   "version": "1.0.3",
   "description": "A set of React Hooks to help build both single and range datepickers",
   "main": "dist/index.cjs.js",

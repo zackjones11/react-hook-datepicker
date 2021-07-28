@@ -3,11 +3,11 @@
 ## Install
 
 ```
-npm install @zackjones11/react-hook-datepicker --save
+npm install react-hook-datepicker --save
 ```
 
 ```
-yarn add @zackjones11/react-hook-datepicker
+yarn add react-hook-datepicker
 ```
 
 
