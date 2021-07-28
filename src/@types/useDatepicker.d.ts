@@ -10,9 +10,8 @@ declare type UseDatePickerReturn = {
     props: GetDateProps
   ) => {
     onClick: () => void;
-    isSelected: boolean;
+    selected: boolean;
     disabled: boolean;
-    isHovered: boolean;
   };
   getNextMonthButtonProps: () => { onClick: () => void };
   getPrevMonthButtonProps: () => { onClick: () => void };

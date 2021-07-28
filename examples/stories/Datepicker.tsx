@@ -37,13 +37,13 @@ const DatePicker: React.FC = () => {
 
         <ol className="calendar">
           {calendar.dates.map((date) => {
-            const { isSelected, isHovered, disabled, ...props } = getDateProps({
+            const { selected, disabled, ...props } = getDateProps({
               date,
             });
 
-            const classes = `${isSelected ? "selected" : ""} ${
-              isHovered ? "hovered" : ""
-            } ${disabled ? "disabled" : ""}`;
+            const classes = `${selected ? "selected" : ""} ${
+              disabled ? "disabled" : ""
+            }`;
 
             return (
               <li {...props} key={date.toString()} className={classes}>

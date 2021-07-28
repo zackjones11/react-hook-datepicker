@@ -12,10 +12,9 @@ declare type UseDateRangePickerReturn = {
     props: GetDateProps
   ) => {
     onClick: () => void;
-    isHovered: boolean;
-    isSelected: boolean;
+    selected: boolean;
     disabled: boolean;
-    isInRange: boolean;
+    inRange: boolean;
   };
   getNextMonthButtonProps: () => { onClick: () => void };
   getPrevMonthButtonProps: () => { onClick: () => void };

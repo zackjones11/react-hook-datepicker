@@ -15,12 +15,12 @@ const useDateRangePicker = (
     start: props.value?.start || new Date(),
     end: addMonth(props.value?.end || new Date()),
   });
-  const [hoveredRange, setHoveredRange] = React.useState<
+  const [preSelectedRange, setPreSelectedRange] = React.useState<
     DateRange | undefined
   >();
 
-  const handleDateHovered = (date: Date) => {
-    setHoveredRange({ start: props.value.start, end: date });
+  const handleDateHover = (date: Date) => {
+    setPreSelectedRange({ start: props.value.start, end: date });
   };
 
   const handleDateClicked = (date: Date) => {
@@ -32,21 +32,19 @@ const useDateRangePicker = (
       [stateKey]: date,
     };
 
-    setHoveredRange(nextRange);
+    setPreSelectedRange(nextRange);
     props.onChange(nextRange);
   };
 
   const getDateProps = ({ date }: { date: Date }) => {
-    const isSelected =
+    const selected =
       isSameDate(props.value.start, date) || isSameDate(props.value.end, date);
 
     const disabled = props.disabledWhen?.(date) || false;
 
-    const isInRange =
-      isBeforeDate(props.value.start || hoveredRange?.start, date) &&
-      isAfterDate(props.value.end || hoveredRange?.end, date);
-
-    const isHovered = isSameDate(hoveredRange?.end, date);
+    const inRange =
+      isBeforeDate(props.value.start || preSelectedRange?.start, date) &&
+      isAfterDate(props.value.end || preSelectedRange?.end, date);
 
     const onClick = () => {
       if (!disabled) {
@@ -56,11 +54,10 @@ const useDateRangePicker = (
 
     return {
       onClick,
-      onPointerOver: () => handleDateHovered(date),
-      isSelected,
+      onPointerOver: () => handleDateHover(date),
+      selected,
       disabled,
-      isInRange,
-      isHovered,
+      inRange,
     };
   };
 

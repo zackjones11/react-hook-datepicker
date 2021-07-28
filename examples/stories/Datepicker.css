@@ -33,7 +33,7 @@ li.disabled {
 	color: green;
 }
 
-.hovered:before {
+li:hover:before {
 	content: "";
 	border: 1px solid black;
 	width: 100%;

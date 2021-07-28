@@ -47,19 +47,13 @@ const DateRangePicker: React.FC = () => {
             </p>
             <ol className="calendar">
               {calendar.dates.map((date) => {
-                const {
-                  isSelected,
-                  disabled,
-                  isInRange,
-                  isHovered,
-                  ...props
-                } = getDateProps({
+                const { selected, disabled, inRange, ...props } = getDateProps({
                   date,
                 });
 
-                const classes = `${isSelected ? "selected" : ""} ${
-                  isInRange ? "in-range" : ""
-                } ${isHovered ? "hovered" : ""} ${disabled ? "disabled" : ""}`;
+                const classes = `${selected ? "selected" : ""} ${
+                  inRange ? "in-range" : ""
+                } ${disabled ? "disabled" : ""}`;
 
                 return (
                   <li {...props} key={date.toString()} className={classes}>
