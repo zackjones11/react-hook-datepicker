@@ -1,6 +1,6 @@
 {
   "name": "react-hook-datepicker",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A set of React Hooks to help build both single and range datepickers",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
