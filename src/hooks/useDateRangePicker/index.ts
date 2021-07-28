@@ -40,16 +40,25 @@ const useDateRangePicker = (
     const isSelected =
       isSameDate(props.value.start, date) || isSameDate(props.value.end, date);
 
+    const disabled = props.disabledWhen?.(date) || false;
+
     const isInRange =
       isBeforeDate(props.value.start || hoveredRange?.start, date) &&
       isAfterDate(props.value.end || hoveredRange?.end, date);
 
     const isHovered = isSameDate(hoveredRange?.end, date);
 
+    const onClick = () => {
+      if (!disabled) {
+        handleDateClicked(date);
+      }
+    };
+
     return {
-      onClick: () => handleDateClicked(date),
+      onClick,
       onPointerOver: () => handleDateHovered(date),
       isSelected,
+      disabled,
       isInRange,
       isHovered,
     };

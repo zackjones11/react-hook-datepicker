@@ -9,9 +9,18 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
   const [hoveredDate, setHoveredDate] = React.useState<Date | undefined>();
 
   const getDateProps = ({ date }: GetDateProps) => {
+    const disabled = props.disabledWhen?.(date) || false;
+
+    const onClick = () => {
+      if (!disabled) {
+        props.onChange(date);
+      }
+    };
+
     return {
-      onClick: () => props.onChange(date),
+      onClick,
       onPointerOver: () => setHoveredDate(date),
+      disabled,
       isSelected: isSameDate(props.value, date),
       isHovered: isSameDate(hoveredDate, date),
     };

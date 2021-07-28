@@ -3,6 +3,11 @@ import * as React from "react";
 import { useDatePicker } from "../../src/index";
 import "./DatePicker.css";
 
+const disabledWhen = (date: Date) => {
+  const today = new Date().setHours(0, 0, 0, 0);
+  return date.getTime() < today;
+};
+
 const DatePicker: React.FC = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>();
   const {
@@ -10,7 +15,11 @@ const DatePicker: React.FC = () => {
     getDateProps,
     getPrevMonthButtonProps,
     getNextMonthButtonProps,
-  } = useDatePicker({ value: selectedDate, onChange: setSelectedDate });
+  } = useDatePicker({
+    value: selectedDate,
+    onChange: setSelectedDate,
+    disabledWhen,
+  });
 
   return (
     <div className="calendar-wrapper">
@@ -28,11 +37,13 @@ const DatePicker: React.FC = () => {
 
         <ol className="calendar">
           {calendar.dates.map((date) => {
-            const { isSelected, isHovered, ...props } = getDateProps({ date });
+            const { isSelected, isHovered, disabled, ...props } = getDateProps({
+              date,
+            });
 
             const classes = `${isSelected ? "selected" : ""} ${
               isHovered ? "hovered" : ""
-            }`;
+            } ${disabled ? "disabled" : ""}`;
 
             return (
               <li {...props} key={date.toString()} className={classes}>
