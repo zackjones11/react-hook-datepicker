@@ -1,8 +1,15 @@
 # React Hook Date Picker (work in progress)
 
+## Install
+
 ```
 npm install @zackjones11/react-hook-datepicker --save
 ```
+
+```
+yarn add @zackjones11/react-hook-datepicker
+```
+
 
 ### useDatePicker
 
@@ -20,8 +27,10 @@ const {
 ### useDateRangePicker
 
 ```ts
+type Range = { start: Date | undefined; end: Date | undefined; }
+const [selectedRange, setSelectedRange] = React.useState<Range>({ start: undefined, end: undefined });
+
 const {
-  selectedRange,
   calendars,
   getDateProps,
   getPrevMonthButtonProps,
