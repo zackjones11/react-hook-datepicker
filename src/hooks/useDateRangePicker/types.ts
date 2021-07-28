@@ -1,12 +1,14 @@
-declare type DateRange = { start?: Date; end?: Date };
+import { Calendar, GetDateProps } from "../../types";
 
-declare type UseDateRangePicker = {
+export type DateRange = { start?: Date; end?: Date };
+
+export type UseDateRangePicker = {
   value: DateRange;
   onChange: (value: DateRange) => void;
   disabledWhen?: (date: Date) => boolean;
 };
 
-declare type UseDateRangePickerReturn = {
+export type UseDateRangePickerReturn = {
   calendars: Calendar[];
   getDateProps: (
     props: GetDateProps

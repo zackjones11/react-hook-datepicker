@@ -1,10 +1,12 @@
-declare type UseDatePicker = {
+import { Calendar, GetDateProps } from "../../types";
+
+export type UseDatePicker = {
   value: Date | undefined;
   onChange: (value: Date | undefined) => void;
   disabledWhen?: (date: Date) => boolean;
 };
 
-declare type UseDatePickerReturn = {
+export type UseDatePickerReturn = {
   calendar: Calendar;
   getDateProps: (
     props: GetDateProps

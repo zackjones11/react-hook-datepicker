@@ -7,6 +7,11 @@ import {
   subMonth,
   createCalendar,
 } from "../../utils";
+import {
+  UseDateRangePicker,
+  UseDateRangePickerReturn,
+  DateRange,
+} from "./types";
 
 const useDateRangePicker = (
   props: UseDateRangePicker

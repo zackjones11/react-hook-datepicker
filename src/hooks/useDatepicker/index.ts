@@ -1,6 +1,8 @@
 import * as React from "react";
 import * as DateFn from "date-fns";
 import { createCalendar, isSameDate } from "../../utils";
+import { UseDatePicker, UseDatePickerReturn } from "./types";
+import { GetDateProps } from "../../types";
 
 const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
   const [visibleDate, setVisibleDate] = React.useState(
