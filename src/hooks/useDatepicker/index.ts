@@ -40,8 +40,10 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
     };
   };
 
+  const calendar = createCalendar(visibleDate);
+
   return {
-    calendar: createCalendar(visibleDate),
+    calendar,
     getDateProps,
     getNextMonthButtonProps,
     getPrevMonthButtonProps,

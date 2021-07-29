@@ -46,7 +46,7 @@ const DateRangePicker: React.FC = () => {
               {calendar.month} {calendar.year}
             </p>
             <ol className="calendar">
-              {calendar.dates.map((date) => {
+              {calendar.dates.map((date, index) => {
                 const { selected, disabled, inRange, ...props } = getDateProps({
                   date,
                 });
@@ -56,7 +56,15 @@ const DateRangePicker: React.FC = () => {
                 } ${disabled ? "disabled" : ""}`;
 
                 return (
-                  <li {...props} key={date.toString()} className={classes}>
+                  <li
+                    style={{
+                      gridColumn:
+                        index === 0 ? calendar.firstDayOfMonth : "auto",
+                    }}
+                    {...props}
+                    key={date.toString()}
+                    className={classes}
+                  >
                     {format(date, "d")}
                   </li>
                 );

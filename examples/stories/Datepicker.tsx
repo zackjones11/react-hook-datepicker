@@ -36,7 +36,7 @@ const DatePicker: React.FC = () => {
         <button {...getNextMonthButtonProps()}>Next Month</button>
 
         <ol className="calendar">
-          {calendar.dates.map((date) => {
+          {calendar.dates.map((date, index) => {
             const { selected, disabled, ...props } = getDateProps({
               date,
             });
@@ -46,7 +46,14 @@ const DatePicker: React.FC = () => {
             }`;
 
             return (
-              <li {...props} key={date.toString()} className={classes}>
+              <li
+                style={{
+                  gridColumn: index === 0 ? calendar.firstDayOfMonth : "auto",
+                }}
+                {...props}
+                key={date.toString()}
+                className={classes}
+              >
                 {format(date, "d")}
               </li>
             );
