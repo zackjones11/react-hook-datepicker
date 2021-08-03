@@ -1,6 +1,6 @@
 # React Hook Date Picker
 
-A set of hooks that flexible hooks to allow fully customisable single and range date pickers
+A set of hooks that allow you to build fully customisable single and range date pickers
 ## Installation
 
 ```
@@ -12,7 +12,7 @@ npm install react-hook-datepicker --save
 
 ### useDatePicker Usage
 
-> [Try in codesandbox](https://codesandbox.io/s/react-hook-datepicker-usedatepicker-hxm1k?file=/src/DatePicker.tsx)
+> [Try in codesandbox](https://codesandbox.io/s/datepicker-jx7si?file=/src/DatePicker.tsx)
 
 ```ts
 const [selectedDate, setSelectedDate] = React.useState<Date | undefined>()
@@ -27,7 +27,7 @@ const {
 
 ### useDateRangePicker Useage
 
-> [Try in codesandbox](https://codesandbox.io/s/daterangepicker-z22se?file=/src/components/DaysOfWeek.ts:41-326)
+> [Try in codesandbox](https://codesandbox.io/s/daterangepicker-z22se?file=/src/DateRangePicker.tsx)
 
 ```ts
 type Range = { start: Date | undefined; end: Date | undefined; }
@@ -39,5 +39,5 @@ const {
   getDateProps,
   getPrevMonthButtonProps,
   getNextMonthButtonProps,
-} = useDateRangePicker()
+} = useDateRangePicker({ value: selectedRange, onChange: setSelectedRange })
 ```
