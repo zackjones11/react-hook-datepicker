@@ -25,7 +25,7 @@ const {
 } = useDatePicker({ value: selectedDate, onChange: setSelectedDate })
 ```
 
-### useDateRangePicker Useage
+### useDateRangePicker Usage
 
 > [Try in codesandbox](https://codesandbox.io/s/daterangepicker-z22se?file=/src/DateRangePicker.tsx)
 
