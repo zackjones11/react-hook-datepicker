@@ -10,9 +10,9 @@ const disabledWhen = (date: Date) => {
 
 const DateRangePicker: React.FC = () => {
   const [selectedRange, setSelectedRange] = React.useState<{
-    start: Date | undefined;
-    end: Date | undefined;
-  }>({ start: undefined, end: undefined });
+    start?: Date;
+    end?: Date;
+  }>();
   const {
     calendars,
     getDateProps,
