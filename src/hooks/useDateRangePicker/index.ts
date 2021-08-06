@@ -86,8 +86,8 @@ const useDateRangePicker = (
 
   return {
     calendars: [
-      createCalendar(visibleRange.start),
-      createCalendar(visibleRange.end),
+      createCalendar(visibleRange.start, "start"),
+      createCalendar(visibleRange.end, "end"),
     ],
     getDateProps,
     getNextMonthButtonProps,

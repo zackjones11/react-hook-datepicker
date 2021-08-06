@@ -34,9 +34,9 @@ const DateRangePicker: React.FC = () => {
       <button {...getNextMonthButtonProps()}>Next Month</button>
 
       <div style={{ display: "inline-flex" }}>
-        {calendars.map((calendar, index) => (
+        {calendars.map((calendar) => (
           <div
-            key={index}
+            key={calendar.view}
             style={{
               width: 260,
               marginRight: 10,

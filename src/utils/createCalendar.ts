@@ -1,11 +1,12 @@
 import * as DateFn from "date-fns";
 import getDatesInMonth from "./getDatesInMonth";
-import { Calendar } from "../types";
+import { Calendar, View } from "../types";
 
-const createCalendar = (date: Date): Calendar => {
+const createCalendar = (date: Date, view?: View): Calendar => {
   const dates = getDatesInMonth(date);
 
   return {
+    view: view || null,
     month: DateFn.format(date, "MMMM"),
     year: DateFn.getYear(date),
     dates,
