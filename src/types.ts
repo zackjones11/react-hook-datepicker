@@ -5,7 +5,7 @@ export type GetDateProps = {
 export type View = "start" | "end";
 
 export type Calendar = {
-  view: View | null;
+  view?: View;
   dates: Date[];
   month: string;
   year: number;

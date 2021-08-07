@@ -6,7 +6,7 @@ const createCalendar = (date: Date, view?: View): Calendar => {
   const dates = getDatesInMonth(date);
 
   return {
-    view: view || null,
+    view,
     month: DateFn.format(date, "MMMM"),
     year: DateFn.getYear(date),
     dates,
