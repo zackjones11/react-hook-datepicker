@@ -12,7 +12,6 @@
   "scripts": {
     "build": "rollup --config",
     "test:unit": "jest /src",
-    "test:unit:watch": "npm run test:unit -- --watchAll",
     "lint": "eslint *.{ts,tsx}",
     "lint:fix": "yarn lint --fix"
   },
