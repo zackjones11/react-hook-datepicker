@@ -9,6 +9,7 @@ export type UseDateRangePicker = {
 };
 
 export type UseDateRangePickerReturn = {
+  visibleRange: DateRange;
   calendars: Calendar[];
   getDateProps: (
     props: GetDateProps
