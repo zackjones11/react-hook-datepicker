@@ -18,7 +18,7 @@ const useDateRangePicker = (
 ): UseDateRangePickerReturn => {
   const [visibleRange, setVisibleRange] = React.useState({
     start: props.value?.start || new Date(),
-    end: addMonth(props.value?.end || new Date()),
+    end: props.value?.end || addMonth(new Date()),
   });
   const [preSelectedRange, setPreSelectedRange] = React.useState<
     DateRange | undefined
@@ -85,6 +85,7 @@ const useDateRangePicker = (
   };
 
   return {
+    visibleRange,
     calendars: [
       createCalendar(visibleRange.start, "start"),
       createCalendar(visibleRange.end, "end"),
