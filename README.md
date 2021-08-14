@@ -90,10 +90,10 @@ const {
 
 ## Range Type
 
-| Name  | Type               | Description                                           |
-| ----- | ------------------ | ----------------------------------------------------- |
-| start | `Date | undefined` | JS Date format that represents the start of the range |
-| end   | `Date | undefined` | JS Date format that represents the end of the range   |
+| Name  | Type                               | Description                                           |
+| ----- | ---------------------------------- | ----------------------------------------------------- |
+| start | <code>Date &#124; undefined</code> | JS Date format that represents the start of the range |
+| end   | <code>Date &#124; undefined</code> | JS Date format that represents the end of the range   |
 ## Calendar Type
 
 | Name            | Type                              | Description                                                             |

@@ -22,8 +22,11 @@
   "keywords": [
     "react",
     "datepicker",
-    "rangedatepicker",
-    "calendar"
+    "range",
+    "date input",
+    "calendar",
+    "useDatePicker",
+    "useDateRangePicker"
   ],
   "peerDependencies": {
     "date-fns": "^2.19.0",
