@@ -37,6 +37,7 @@ describe("useDatePicker", () => {
       disabled: false,
       onClick: expect.any(Function),
       selected: false,
+      tabindex: "-1",
     };
 
     expect(

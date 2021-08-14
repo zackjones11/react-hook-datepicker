@@ -8,6 +8,7 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
   const [visibleDate, setVisibleDate] = React.useState(
     props.value || new Date()
   );
+
   const getDateProps = ({ date }: GetDateProps) => {
     const disabled = props.disabledWhen?.(date) || false;
 
@@ -21,6 +22,7 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
       onClick,
       disabled,
       selected: isSameDate(props.value, date),
+      tabindex: "-1",
     };
   };
 
@@ -29,6 +31,8 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
 
     return {
       onClick: () => setVisibleDate(nextVisibleDate),
+      "aria-label": "next month",
+      role: "button",
     };
   };
 
@@ -37,6 +41,8 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
 
     return {
       onClick: () => setVisibleDate(nextVisibleDate),
+      "aria-label": "previous month",
+      role: "button",
     };
   };
 
