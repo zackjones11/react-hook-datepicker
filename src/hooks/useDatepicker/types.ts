@@ -7,6 +7,7 @@ export type UseDatePicker = {
 };
 
 export type UseDatePickerReturn = {
+  visibleDate: Date;
   calendar: Calendar;
   getDateProps: (
     props: GetDateProps

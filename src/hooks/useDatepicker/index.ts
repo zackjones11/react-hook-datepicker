@@ -43,6 +43,7 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
   const calendar = createCalendar(visibleDate);
 
   return {
+    visibleDate,
     calendar,
     getDateProps,
     getNextMonthButtonProps,
