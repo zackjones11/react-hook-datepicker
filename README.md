@@ -37,12 +37,13 @@ const {
 
 | Name                     | Type        | Description                                                                       |
 | ------------------------ | ----------- | --------------------------------------------------------------------------------- |
+| visibleDate              | `Date`      | The date that is currently visible                                                |
 | calendar                 | `Calendar`  | An object that allows you to construct the calendar view                          |
 | getDateProps             | `function`  | Returns props that should be applied to each date element you render              |
 | getPrevMonthButtonProps  | `function`  | Returns props that should be applied to the button for viewing the previous month |
 | getNextMonthButtonProps  | `function`  | Returns props that should be applied to the button for viewing the next month     |
 
-## Calendar
+## Calendar Type
 
 | Name            | Type     | Description                                                         |
 | --------------- | -------- | ------------------------------------------------------------------- |
@@ -71,24 +72,31 @@ const {
 
 ## Options
 
-| Name         | Type                           | Description                                                             |
-| ------------ | ------------------------------ | ----------------------------------------------------------------------- |
-| value        | `{ start?: Date, end?: Date }` | undefined | The current selected range. This can be undefined initially |
-| onChange     | `function`                     | Called when the user selects a date                                     |
-| disabledWhen | `function`                     | Used to disable before a date. It expects a boolean to be returned      |
+| Name         | Type        | Description                                                             |
+| ------------ | ----------- | ----------------------------------------------------------------------- |
+| value        | `DateRange` | undefined | The current selected range. This can be undefined initially |
+| onChange     | `function`  | Called when the user selects a date                                     |
+| disabledWhen | `function`  | Used to disable before a date. It expects a boolean to be returned      |
 
 ## Returned Props
 
 | Name                      | Type         | Description                                                                       |
 | ------------------------- | ------------ | --------------------------------------------------------------------------------- |
+| visibleRange              | `DateRange`  | The date range that is currently visible                                          |
 | calendars                 | `Calendar[]` | An object that allows you to construct the calendar view                          |
 | getDateProps              | `function`   | Returns props that should be applied to each date element you render              |
 | getPrevMonthButtonProps   | `function`   | Returns props that should be applied to the button for viewing the previous month |
 | getNextMonthButtonProps   | `function`   | Returns props that should be applied to the button for viewing the next month     |
 
-## Calendar
+## Range Type
 
-| Name            | Type   | Description                                                                                        |
+| Name  | Type               | Description                                           |
+| ----- | ------------------ | ----------------------------------------------------- |
+| start | `Date | undefined` | JS Date format that represents the start of the range |
+| end   | `Date | undefined` | JS Date format that represents the end of the range   |
+## Calendar Type
+
+| Name            | Type                              | Description                                                             |
 | --------------- | --------------------------------- | ----------------------------------------------------------------------- |
 | view            | <code>'start' &#124; 'end'</code> | A string to identify start of end calendar                              |
 | dates           | `Date[]`                          | An array of dates in the current month                                  |
