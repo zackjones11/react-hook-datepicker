@@ -23,6 +23,9 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
       disabled,
       selected: isSameDate(props.value, date),
       tabindex: "-1",
+      "aria-disabled": disabled,
+      "aria-label": date,
+      role: "button",
     };
   };
 

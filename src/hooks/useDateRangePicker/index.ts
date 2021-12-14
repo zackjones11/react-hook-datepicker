@@ -63,6 +63,9 @@ const useDateRangePicker = (
       selected,
       disabled,
       inRange,
+      "aria-disabled": disabled,
+      "aria-label": date,
+      role: "button",
     };
   };
 
@@ -72,6 +75,8 @@ const useDateRangePicker = (
 
     return {
       onClick: () => setVisibleRange({ start, end }),
+      "aria-label": "next month",
+      role: "button",
     };
   };
 
@@ -81,6 +86,8 @@ const useDateRangePicker = (
 
     return {
       onClick: () => setVisibleRange({ start, end }),
+      "aria-label": "previous month",
+      role: "button",
     };
   };
 
