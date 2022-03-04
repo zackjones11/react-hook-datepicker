@@ -22,7 +22,7 @@ module.exports = {
   },
   rules: {
     "react/prop-types": 0,
-    "@typescript-eslint/no-explicit-any": 2,
+    "@typescript-eslint/no-explicit-any": 0,
   },
   settings: {
     react: {
