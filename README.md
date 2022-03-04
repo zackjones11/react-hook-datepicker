@@ -16,13 +16,14 @@ npm install react-hook-datepicker --save
 
 ```ts
 const [selectedDate, setSelectedDate] = React.useState<Date | undefined>()
+const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
 const {
   calendar,
   getDateProps,
   getPrevMonthButtonProps,
   getNextMonthButtonProps,
-} = useDatePicker({ value: selectedDate, onChange: setSelectedDate })
+} = useDatePicker({ value: selectedDate, isOpen, onChange: setSelectedDate })
 ```
 
 ## Options
@@ -30,6 +31,7 @@ const {
 | Name         | Type                               | Description                                                  |
 | ------------ | ---------------------------------- | ------------------------------------------------------------ |
 | value        | <code>Date &#124; undefined</code> | The current selected date. This can be `undefined` initially |
+| isOpen       | `boolean`                          | Should be truthy when the calendar is open                   |
 | onChange     | `function`                         | Called when the user selects a date                          |
 | disabledWhen | `function`                         | Used to disable dates. It expects a boolean to be returned   |
 

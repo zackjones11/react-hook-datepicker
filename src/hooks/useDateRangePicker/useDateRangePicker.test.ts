@@ -52,10 +52,13 @@ describe("useDateRangePicker", () => {
     );
 
     const expected = {
+      "aria-disabled": false,
+      "aria-label": new Date("08/18/2021"),
       disabled: false,
       inRange: true,
       onClick: expect.any(Function),
       onPointerOver: expect.any(Function),
+      role: "button",
       selected: false,
     };
 

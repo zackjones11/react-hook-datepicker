@@ -1,12 +1,18 @@
 import { act, renderHook } from "@testing-library/react-hooks";
 import useDatePicker from ".";
 
+const isOpen = true;
+
 describe("useDatePicker", () => {
   it("should return correct props", () => {
     const onChangeMock = jest.fn();
 
     const { result } = renderHook(() =>
-      useDatePicker({ value: new Date("08/15/2021"), onChange: onChangeMock })
+      useDatePicker({
+        value: new Date("08/15/2021"),
+        isOpen,
+        onChange: onChangeMock,
+      })
     );
 
     const expected = {
@@ -30,14 +36,23 @@ describe("useDatePicker", () => {
     const onChangeMock = jest.fn();
 
     const { result } = renderHook(() =>
-      useDatePicker({ value: new Date("08/15/2021"), onChange: onChangeMock })
+      useDatePicker({
+        value: new Date("08/15/2021"),
+        isOpen,
+        onChange: onChangeMock,
+      })
     );
 
     const expected = {
-      disabled: false,
       onClick: expect.any(Function),
+      disabled: false,
+      onKeyDown: expect.any(Function),
+      tabIndex: "-1",
+      ref: expect.any(Function),
       selected: false,
-      tabindex: "-1",
+      "aria-disabled": false,
+      "aria-label": expect.any(Date),
+      role: "button",
     };
 
     expect(
@@ -49,7 +64,11 @@ describe("useDatePicker", () => {
     const onChangeMock = jest.fn();
 
     const { result } = renderHook(() =>
-      useDatePicker({ value: new Date("08/15/2021"), onChange: onChangeMock })
+      useDatePicker({
+        value: new Date("08/15/2021"),
+        isOpen,
+        onChange: onChangeMock,
+      })
     );
 
     act(() => {
@@ -63,7 +82,11 @@ describe("useDatePicker", () => {
     const onChangeMock = jest.fn();
 
     const { result } = renderHook(() =>
-      useDatePicker({ value: new Date("08/15/2021"), onChange: onChangeMock })
+      useDatePicker({
+        value: new Date("08/15/2021"),
+        isOpen,
+        onChange: onChangeMock,
+      })
     );
 
     act(() => {
@@ -77,7 +100,11 @@ describe("useDatePicker", () => {
     const onChangeMock = jest.fn();
 
     const { result } = renderHook(() =>
-      useDatePicker({ value: new Date("09/29/2021"), onChange: onChangeMock })
+      useDatePicker({
+        value: new Date("09/29/2021"),
+        isOpen,
+        onChange: onChangeMock,
+      })
     );
 
     act(() => {
@@ -96,6 +123,7 @@ describe("useDatePicker", () => {
     const { result } = renderHook(() =>
       useDatePicker({
         value: new Date("09/29/2021"),
+        isOpen,
         onChange: onChangeMock,
         disabledWhen: () => true,
       })
@@ -106,5 +134,139 @@ describe("useDatePicker", () => {
     });
 
     expect(onChangeMock).not.toHaveBeenCalled();
+  });
+
+  it("should change visibleDate to tomorrow when pressing ArrowRight", () => {
+    const onChangeMock = jest.fn();
+
+    const { result } = renderHook(() =>
+      useDatePicker({
+        value: new Date("09/29/2021"),
+        isOpen,
+        onChange: onChangeMock,
+        disabledWhen: () => false,
+      })
+    );
+
+    act(() => {
+      result.current
+        .getDateProps({ date: new Date("09/29/2021") })
+        .onKeyDown?.({ key: "ArrowRight" } as any);
+    });
+
+    expect(result.current.visibleDate).toEqual(new Date("09/30/2021"));
+  });
+
+  it("should change visibleDate to yesterday day when pressing ArrowLeft", () => {
+    const onChangeMock = jest.fn();
+
+    const { result } = renderHook(() =>
+      useDatePicker({
+        value: new Date("09/29/2021"),
+        isOpen,
+        onChange: onChangeMock,
+        disabledWhen: () => false,
+      })
+    );
+
+    act(() => {
+      result.current
+        .getDateProps({ date: new Date("09/29/2021") })
+        .onKeyDown?.({ key: "ArrowLeft" } as any);
+    });
+
+    expect(result.current.visibleDate).toEqual(new Date("09/28/2021"));
+  });
+
+  it("should change visibleDate to last week when pressing ArrowUp", () => {
+    const onChangeMock = jest.fn();
+
+    const { result } = renderHook(() =>
+      useDatePicker({
+        value: new Date("09/29/2021"),
+        isOpen,
+        onChange: onChangeMock,
+        disabledWhen: () => false,
+      })
+    );
+
+    act(() => {
+      result.current
+        .getDateProps({ date: new Date("09/29/2021") })
+        .onKeyDown?.({ key: "ArrowUp" } as any);
+    });
+
+    expect(result.current.visibleDate).toEqual(new Date("09/22/2021"));
+  });
+
+  it("should change visibleDate to next week when pressing ArrowDown", () => {
+    const onChangeMock = jest.fn();
+
+    const { result } = renderHook(() =>
+      useDatePicker({
+        value: new Date("09/29/2021"),
+        isOpen,
+        onChange: onChangeMock,
+        disabledWhen: () => false,
+      })
+    );
+
+    act(() => {
+      result.current
+        .getDateProps({ date: new Date("09/29/2021") })
+        .onKeyDown?.({ key: "ArrowDown" } as any);
+    });
+
+    expect(result.current.visibleDate).toEqual(new Date("10/06/2021"));
+  });
+
+  it("should set the selectedDate to visibleDate when pressing Enter", () => {
+    const onChangeMock = jest.fn();
+
+    const { result } = renderHook(() =>
+      useDatePicker({
+        value: new Date("09/29/2021"),
+        isOpen,
+        onChange: onChangeMock,
+        disabledWhen: () => false,
+      })
+    );
+
+    act(() => {
+      result.current
+        .getDateProps({ date: new Date("09/29/2021") })
+        .onKeyDown?.({ key: "ArrowDown" } as any);
+    });
+
+    act(() => {
+      result.current
+        .getDateProps({ date: new Date("10/05/2021") })
+        .onKeyDown?.({ key: "Enter" } as any);
+    });
+
+
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith(new Date("10/05/2021"));
+  });
+
+  it("should not fire shortcut events when isOpen is falsy", () => {
+    const onChangeMock = jest.fn();
+
+    const { result } = renderHook(() =>
+      useDatePicker({
+        value: new Date("09/29/2021"),
+        isOpen: false,
+        onChange: onChangeMock,
+        disabledWhen: () => false,
+      })
+    );
+
+    act(() => {
+      result.current
+        .getDateProps({ date: new Date("10/05/2021") })
+        .onKeyDown?.({ key: "Enter" } as any);
+    });
+
+    expect(onChangeMock).not.toHaveBeenCalledTimes(1);
   });
 });

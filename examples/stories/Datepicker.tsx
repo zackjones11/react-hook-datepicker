@@ -17,6 +17,7 @@ const DatePicker: React.FC = () => {
     getNextMonthButtonProps,
   } = useDatePicker({
     value: selectedDate,
+    isOpen: true,
     onChange: setSelectedDate,
     disabledWhen,
   });

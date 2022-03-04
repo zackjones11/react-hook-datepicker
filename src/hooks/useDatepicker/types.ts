@@ -2,6 +2,7 @@ import { Calendar, GetDateProps } from "../../types";
 
 export type UseDatePicker = {
   value: Date | undefined;
+  isOpen: boolean;
   onChange: (value: Date | undefined) => void;
   disabledWhen?: (date: Date) => boolean;
 };
@@ -13,6 +14,7 @@ export type UseDatePickerReturn = {
     props: GetDateProps
   ) => {
     onClick: () => void;
+    onKeyDown: ((event: KeyboardEvent) => void) | undefined;
     selected: boolean;
     disabled: boolean;
   };
