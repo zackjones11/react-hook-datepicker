@@ -25,11 +25,11 @@ const useDateRangePicker = (
   >();
 
   const handleDateHover = (date: Date) => {
-    setPreSelectedRange({ start: props.value.start, end: date });
+    setPreSelectedRange({ start: props.value?.start, end: date });
   };
 
   const handleDateClicked = (date: Date) => {
-    const isAfterStartDate = isAfterDate(date, props.value.start);
+    const isAfterStartDate = isAfterDate(date, props.value?.start);
     const stateKey = isAfterStartDate ? "end" : "start";
 
     const nextRange = {
@@ -43,13 +43,14 @@ const useDateRangePicker = (
 
   const getDateProps = ({ date }: { date: Date }) => {
     const selected =
-      isSameDate(props.value.start, date) || isSameDate(props.value.end, date);
+      isSameDate(props.value?.start, date) ||
+      isSameDate(props.value?.end, date);
 
     const disabled = props.disabledWhen?.(date) || false;
 
     const inRange =
-      isBeforeDate(props.value.start || preSelectedRange?.start, date) &&
-      isAfterDate(props.value.end || preSelectedRange?.end, date);
+      isBeforeDate(props.value?.start || preSelectedRange?.start, date) &&
+      isAfterDate(props.value?.end || preSelectedRange?.end, date);
 
     const onClick = () => {
       if (!disabled) {

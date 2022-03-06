@@ -3,7 +3,7 @@ import { Calendar, GetDateProps } from "../../types";
 export type DateRange = { start?: Date; end?: Date };
 
 export type UseDateRangePicker = {
-  value: DateRange;
+  value: DateRange | undefined;
   onChange: (value: DateRange) => void;
   disabledWhen?: (date: Date) => boolean;
 };
