@@ -30,7 +30,7 @@ const useDatePicker = (props: UseDatePicker): UseDatePickerReturn => {
       Enter: onClick,
     };
 
-    const onKeyDown = (event: KeyboardEvent) => {
+    const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
       handler(event, keyDownActions);
     };
 

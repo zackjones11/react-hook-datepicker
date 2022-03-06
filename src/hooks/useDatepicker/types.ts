@@ -1,3 +1,4 @@
+import React from "react";
 import { Calendar, GetDateProps } from "../../types";
 
 export type UseDatePicker = {
@@ -14,7 +15,7 @@ export type UseDatePickerReturn = {
     props: GetDateProps
   ) => {
     onClick: () => void;
-    onKeyDown: ((event: KeyboardEvent) => void) | undefined;
+    onKeyDown: ((event: React.KeyboardEvent<HTMLElement>) => void) | undefined;
     selected: boolean;
     disabled: boolean;
   };
