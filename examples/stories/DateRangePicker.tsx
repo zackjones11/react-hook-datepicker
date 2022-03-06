@@ -20,6 +20,7 @@ const DateRangePicker: React.FC = () => {
     getNextMonthButtonProps,
   } = useDateRangePicker({
     value: selectedRange,
+    isOpen: true,
     onChange: setSelectedRange,
     disabledWhen,
   });
