@@ -63,22 +63,24 @@ const {
 type Range = { start: Date | undefined; end: Date | undefined; }
 
 const [selectedRange, setSelectedRange] = React.useState<Range>({ start: undefined, end: undefined })
+const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
 const {
   calendars,
   getDateProps,
   getPrevMonthButtonProps,
   getNextMonthButtonProps,
-} = useDateRangePicker({ value: selectedRange, onChange: setSelectedRange })
+} = useDateRangePicker({ value: selectedRange, isOpen, onChange: setSelectedRange })
 ```
 
 ## Options
 
-| Name         | Type        | Description                                                             |
-| ------------ | ----------- | ----------------------------------------------------------------------- |
-| value        | `DateRange` | undefined | The current selected range. This can be undefined initially |
-| onChange     | `function`  | Called when the user selects a date                                     |
-| disabledWhen | `function`  | Used to disable before a date. It expects a boolean to be returned      |
+| Name         | Type                                     | Description                                                        |
+| ------------ | ---------------------------------------- | ------------------------------------------------------------------ |
+| value        | <code>DateRange &#124; undefined</code>  | The current selected range. This can be undefined initially        |
+| isOpen       | `boolean`                                | Should be truthy when the calendar is open                         |
+| onChange     | `function`                               | Called when the user selects a date                                |
+| disabledWhen | `function`                               | Used to disable before a date. It expects a boolean to be returned |
 
 ## Returned Props
 
