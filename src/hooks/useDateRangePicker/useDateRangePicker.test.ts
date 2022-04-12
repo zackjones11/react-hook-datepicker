@@ -7,6 +7,7 @@ describe("useDateRangePicker", () => {
 
     const { result } = renderHook(() =>
       useDateRangePicker({
+        isOpen: true,
         value: { start: new Date("08/15/2021"), end: new Date("09/15/2021") },
         onChange: onChangeMock,
       })
@@ -46,6 +47,7 @@ describe("useDateRangePicker", () => {
 
     const { result } = renderHook(() =>
       useDateRangePicker({
+        isOpen: true,
         value: { start: new Date("08/15/2021"), end: new Date("09/15/2021") },
         onChange: onChangeMock,
       })
@@ -72,6 +74,7 @@ describe("useDateRangePicker", () => {
 
     const { result } = renderHook(() =>
       useDateRangePicker({
+        isOpen: true,
         value: { start: new Date("07/15/2021"), end: new Date("08/15/2021") },
         onChange: onChangeMock,
       })
@@ -92,6 +95,7 @@ describe("useDateRangePicker", () => {
 
     const { result } = renderHook(() =>
       useDateRangePicker({
+        isOpen: true,
         value: { start: new Date("08/15/2021"), end: new Date("09/15/2021") },
         onChange: onChangeMock,
       })
@@ -114,6 +118,7 @@ describe("useDateRangePicker", () => {
 
     const { result } = renderHook(() =>
       useDateRangePicker({
+        isOpen: true,
         value: { start: new Date("08/15/2021"), end: initialEndDate },
         onChange: onChangeMock,
       })
@@ -137,6 +142,7 @@ describe("useDateRangePicker", () => {
 
     const { result } = renderHook(() =>
       useDateRangePicker({
+        isOpen: true,
         value: { start: initialStartDate, end: new Date("09/15/2021") },
         onChange: onChangeMock,
       })
@@ -158,6 +164,7 @@ describe("useDateRangePicker", () => {
 
     const { result } = renderHook(() =>
       useDateRangePicker({
+        isOpen: true,
         value: { start: new Date("08/15/2021"), end: new Date("09/15/2021") },
         onChange: onChangeMock,
         disabledWhen: () => true,

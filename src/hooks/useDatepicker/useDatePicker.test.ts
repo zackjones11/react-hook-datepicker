@@ -244,7 +244,6 @@ describe("useDatePicker", () => {
         .onKeyDown?.({ key: "Enter" } as any);
     });
 
-
     expect(onChangeMock).toHaveBeenCalledTimes(1);
     expect(onChangeMock).toHaveBeenCalledWith(new Date("10/05/2021"));
   });

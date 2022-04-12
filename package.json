@@ -1,6 +1,6 @@
 {
   "name": "react-hook-datepicker",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "description": "A set of React Hooks to help build both single and range datepickers",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -12,8 +12,9 @@
   "scripts": {
     "build": "rollup --config",
     "test:unit": "jest /src",
-    "lint": "eslint *.{ts,tsx}",
-    "lint:fix": "yarn lint --fix"
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -33,25 +34,27 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/react-hooks": "^7.0.1",
-    "@types/jest": "^26.0.22",
-    "@types/react": "^17.0.3",
-    "@typescript-eslint/eslint-plugin": "^4.20.0",
-    "@typescript-eslint/parser": "^4.20.0",
+    "@jest/types": "^27.5.1",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/react-hooks": "^8.0.0",
+    "@types/jest": "^27.4.1",
+    "@types/react": "^18.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "date-fns": "*",
-    "eslint": "^7.23.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.23.1",
-    "husky": "^6.0.0",
-    "jest": "^27.0.6",
-    "lint-staged": "^10.5.4",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "husky": "^7.0.0",
+    "jest": "^27.5.1",
+    "lint-staged": "^12.3.7",
     "react": "*",
-    "rollup": "^2.44.0",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.2.3"
+    "rollup": "^2.70.1",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
   },
   "author": "Zack Jones (https://zackjones.dev/)",
   "license": "MIT",
@@ -59,13 +62,8 @@
     "url": "https://github.com/zackjones11/react-hook-datepicker/issues"
   },
   "homepage": "https://github.com/zackjones11/react-hook-datepicker#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:types && lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{json}": [
+    "*.json": [
       "prettier --write"
     ],
     "*.{ts,tsx}": [
