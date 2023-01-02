@@ -12,9 +12,7 @@ export type UseDateRangePicker = {
 export type UseDateRangePickerReturn = {
   visibleRange: DateRange;
   calendars: Calendar[];
-  getDateProps: (
-    props: GetDateProps
-  ) => {
+  getDateProps: (props: GetDateProps) => {
     onClick: () => void;
     selected: boolean;
     disabled: boolean;

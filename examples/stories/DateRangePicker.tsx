@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDateRangePicker } from "../../src/index";
+import { useDateRangePicker } from "react-hook-datepicker";
 import { format } from "date-fns";
 import "./DatePicker.css";
 

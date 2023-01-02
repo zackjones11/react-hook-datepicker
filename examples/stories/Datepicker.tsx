@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import * as React from "react";
-import { useDatePicker } from "../../src/index";
+import { useDatePicker } from "react-hook-datepicker";
 import "./DatePicker.css";
 
 const disabledWhen = (date: Date) => {

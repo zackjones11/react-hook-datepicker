@@ -2,10 +2,8 @@ import * as React from "react";
 import DatePicker from "./DatePicker";
 
 export default {
-  title: "Example/DatePicker",
+  title: "DatePicker",
   component: DatePicker,
 };
 
-const Template: React.FC = () => <DatePicker />;
-
-export const Basic = Template.bind({});
+export const Basic = { render: () => <DatePicker /> };
